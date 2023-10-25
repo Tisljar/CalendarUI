@@ -5,4 +5,5 @@ export interface IMonth {
     lastDayOfMonth: string;
     monthDuration: string;
     monthName: string;
+    year: string;
 }

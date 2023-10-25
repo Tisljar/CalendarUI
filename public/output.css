@@ -599,12 +599,20 @@ video {
   display: grid;
 }
 
+.h-full{
+  height: 100%;
+}
+
 .w-\[600px\]{
   width: 600px;
 }
 
 .w-\[1000px\]{
   width: 1000px;
+}
+
+.w-full{
+  width: 100%;
 }
 
 .cursor-pointer{
@@ -641,6 +649,14 @@ video {
 
 .border-r{
   border-right-width: 1px;
+}
+
+.border-l{
+  border-left-width: 1px;
+}
+
+.border-t{
+  border-top-width: 1px;
 }
 
 .p-4{

@@ -1,5 +1,9 @@
-const Cell = ({ className, children }: any) => {
-    return <div className={className}>{children}</div>;
+const Cell = ({ onClick, className, children }: any) => {
+    return (
+        <div onClick={onClick} className={className}>
+            {children}
+        </div>
+    );
 };
 
 export default Cell;
