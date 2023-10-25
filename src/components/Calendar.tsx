@@ -12,16 +12,12 @@ const Calendar = () => {
     const [month, setMonth] = useState(currentMonth);
     const [year, setYear] = useState(currentYear);
     const [calendarMonth, setCalendarMonth] = useState(getDate());
-    const [numberedStart, setNumberedStart] = useState(0);
-    const [numberedEnd, setNumberedEnd] = useState(0);
+    const [numberedStart, setNumberedStart] = useState(daysOfWeek.indexOf(thisMonth.firstDayOfMonth));
+    const [numberedEnd, setNumberedEnd] = useState(6 - daysOfWeek.indexOf(thisMonth.lastDayOfMonth));
     const cellCss = ' p-4 border-b border-r';
     const emptyCellCss = 'border-b border-r w-full h-full';
-    const updateCalendar = (month: string, year: string) => {
+    const updateCalendar = async (month: string, year: string) => {
         setCalendarMonth(getDate(month, year));
-        setMonthName(calendarMonth.monthName);
-        setYear(calendarMonth.year);
-        setNumberedStart(daysOfWeek.indexOf(calendarMonth.firstDayOfMonth));
-        setNumberedEnd(6 - daysOfWeek.indexOf(calendarMonth.lastDayOfMonth));
     };
     const previousMonth = () => {
         const numOfMonth = parseInt(month, 10);
@@ -31,12 +27,16 @@ const Calendar = () => {
             let numOfYear = parseInt(year);
             const newYear = `${numOfYear - 1}`;
             const newMonth = '12';
-            return updateCalendar(newMonth, newYear);
+            setMonth(newMonth);
+            updateCalendar(newMonth, newYear);
+            return;
         } else {
             console.log('lastmonth');
             const newMonth = newNumOfMonth.toString();
             const newFormattedMonth = newNumOfMonth < 10 ? newMonth.toString().padStart(2, '0') : newMonth.toString();
+            setMonth(newFormattedMonth);
             updateCalendar(newFormattedMonth, year);
+            return;
         }
     };
     const nextMonth = () => {
@@ -47,14 +47,26 @@ const Calendar = () => {
             console.log('nextYear');
             let numOfYear = parseInt(year);
             const newYear = `${numOfYear + 1}`;
-            const newMonth = '12';
+            const newMonth = '01';
+            setMonth(newMonth);
+            updateCalendar(newMonth, newYear);
+            return;
         } else {
             console.log('nextmonth');
             const newMonth = newNumOfMonth.toString();
             const newFormattedMonth = newNumOfMonth < 10 ? newMonth.toString().padStart(2, '0') : newMonth.toString();
+            setMonth(newFormattedMonth);
             updateCalendar(newFormattedMonth, year);
+            return;
         }
     };
+    useEffect(() => {
+        // This effect will run whenever calendarMonth changes.
+        setMonthName(calendarMonth.monthName);
+        setYear(calendarMonth.year);
+        setNumberedStart(daysOfWeek.indexOf(calendarMonth.firstDayOfMonth));
+        setNumberedEnd(6 - daysOfWeek.indexOf(calendarMonth.lastDayOfMonth));
+    }, [calendarMonth]);
     // useEffect(() => {
     //     setCalendarMonth(getDate());
     //     setMonthName(calendarMonth.monthName);

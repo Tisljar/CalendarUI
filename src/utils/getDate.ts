@@ -3,19 +3,33 @@ import { currentYear } from './currentDate';
 import moment from 'moment';
 
 export const getDate = (month = currentMonth, year = currentYear) => {
-    console.log(month, year);
-    const monthName = moment(month).format('MMMM');
+    // console.log(month, year);
+    const monthNum = parseInt(month);
+    const date = moment([year, monthNum - 1]);
+    // console.log(date);
+    const monthName = date.format('MMMM');
     // console.log(monthName);
-    const firstDateOfMonth = moment(`${year}-${month}-01`, 'YYYY-MM-DD-ddd');
-    const firstDayOfMonth = moment(firstDateOfMonth).format('ddd');
-    const lastDateOfMonth = moment(firstDateOfMonth).endOf('month');
+    const firstDateOfMonth = date.format('YYYY-MM-DD-ddd');
+    const firstDayOfMonth = date.format('ddd');
+    const lastDateOfMonth = date.endOf('month');
+    console.log(lastDateOfMonth);
+    // console.log(firstDateOfMonth);
+    const monthDuration = date.daysInMonth();
     const lastDayOfMonth = moment(lastDateOfMonth).format('ddd');
-    const monthDuration = lastDateOfMonth.diff(firstDateOfMonth, 'days') + 1;
-    const yearNum = moment(year).format('YYYY');
+    const yearNum = date.format('YYYY');
     // console.log(yearNum);
+    console.log({
+        firstDateOfMonth: firstDateOfMonth,
+        firstDayOfMonth: firstDayOfMonth,
+        lastDateOfMonth: lastDateOfMonth.format('YYYY-MM-DD-ddd'),
+        lastDayOfMonth: lastDayOfMonth,
+        monthDuration: monthDuration,
+        monthName: monthName,
+        year: yearNum,
+    });
 
     return {
-        firstDateOfMonth: firstDateOfMonth.format('YYYY-MM-DD-ddd'),
+        firstDateOfMonth: firstDateOfMonth,
         firstDayOfMonth: firstDayOfMonth,
         lastDateOfMonth: lastDateOfMonth.format('YYYY-MM-DD-ddd'),
         lastDayOfMonth: lastDayOfMonth,
