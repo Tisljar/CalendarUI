@@ -10,8 +10,8 @@ body,
 #root,
 .app {
     height: 100%;
-    background-color: #14181c;
-    @apply text-white;
+    background-color: #ffffff;
+    @apply text-black;
 }
 
 /* apply uses value from tailwind config  */

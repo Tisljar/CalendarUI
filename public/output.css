@@ -573,14 +573,92 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.col-span-5{
+  grid-column: span 5 / span 5;
+}
+
+.mx-0{
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.mx-auto{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mt-8{
+  margin-top: 2rem;
+}
+
+.flex{
+  display: flex;
+}
+
+.grid{
+  display: grid;
+}
+
+.w-\[600px\]{
+  width: 600px;
+}
+
+.w-\[1000px\]{
+  width: 1000px;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.grid-cols-7{
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.flex-col{
+  flex-direction: column;
+}
+
+.items-center{
+  align-items: center;
+}
+
+.justify-center{
+  justify-content: center;
+}
+
+.justify-between{
+  justify-content: space-between;
+}
+
+.border{
+  border-width: 1px;
+}
+
+.border-b{
+  border-bottom-width: 1px;
+}
+
+.border-r{
+  border-right-width: 1px;
+}
+
+.p-4{
+  padding: 1rem;
+}
+
+.text-center{
+  text-align: center;
+}
+
 html,
 body,
 #root,
 .app {
   height: 100%;
-  background-color: #14181c;
+  background-color: #ffffff;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 /* apply uses value from tailwind config  */
