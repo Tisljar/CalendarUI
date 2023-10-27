@@ -11,7 +11,7 @@ body,
 .app {
     height: 100%;
     background-color: #ffffff;
-    @apply text-black;
+    @apply text-dark-bg;
 }
 
 /* apply uses value from tailwind config  */
